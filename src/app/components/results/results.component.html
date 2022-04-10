@@ -1,0 +1,17 @@
+<div class="container mt-3">
+  <h2>Results</h2>            
+  <table class="table table-striped table-bordered">
+    <thead>
+      <tr class="t-head">
+        <th>Numbers Matched</th>
+        <th>Calculated Odds</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let result of results;">
+        <td>{{result.number_matched}} Main Numbers</td>
+        <td>1 in {{result.odds | number : '1.0-0'}}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>

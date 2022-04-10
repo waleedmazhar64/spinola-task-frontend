@@ -1,0 +1,35 @@
+<!-- Spinner -->
+<ngx-spinner type="line-scale" size="medium"><p class="color-white" > Loading... </p></ngx-spinner>
+
+<!-- Home/Form Section -->
+<div class="container mt-3">
+	<h3>Lottery Calculator</h3>
+	
+	<form [formGroup]="user_form" (ngSubmit)="submitForm()">
+		<div class="row">
+			<div class="col">
+				<label class="form-label">Number of balls in the main pool</label>
+				<input type="text" formControlName="number_of_balls" [ngClass]="{ 'is-invalid': submitted && f.number_of_balls.errors }" class="form-control" placeholder="Enter number of balls in the main pool">
+				<div class="invalid-feedback" *ngIf="submitted && f.number_of_balls.errors">
+					<div *ngIf="f.number_of_balls.errors.required">Number of balls in the main pool is required.</div>
+					<div *ngIf="f.number_of_balls.errors.pattern">Number Only.</div>
+				</div>
+			</div>
+			<div class="col">
+				<label class="form-label">Balls drawn from the main pool</label>
+				<input type="text" formControlName="balls_drawn" [ngClass]="{ 'is-invalid': submitted && f.balls_drawn.errors }" class="form-control" placeholder="Enter balls drawn from the main pool">
+				<div class="invalid-feedback" *ngIf="submitted && f.balls_drawn.errors">
+					<div *ngIf="f.balls_drawn.errors.required">Balls drawn from the main pool is required.</div>
+					<div *ngIf="f.balls_drawn.errors.pattern">Number Only.</div>
+				</div>
+			</div>
+		</div>
+		<div class="mb-3 mt-3">
+			<button type="submit" class="btn btn-primary mr-3">Submit</button>
+			<button class="btn btn-secondary" type="reset" (click)="onReset()">Cancel</button>
+		</div>
+	</form>
+</div>
+
+<!-- Results Table -->
+<app-results *ngIf="show_table"></app-results>
